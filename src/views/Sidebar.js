@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box, List, ListItem, ListItemIcon, ListItemText, Collapse, Toolbar, Divider, Typography, Avatar, useTheme } from '@mui/material';
-import { ExpandLess, ExpandMore, Settings, People, AccountCircle, Dashboard, ExitToApp } from '@mui/icons-material';
+import { ExpandLess, ExpandMore, Settings, People, Security, SwapHoriz, AccountCircle, Dashboard, ExitToApp, Assignment } from '@mui/icons-material';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'js-cookie';
@@ -9,7 +9,7 @@ import * as ManagerCookies from './ManagerCookies';
 
 const Sidebar = () => {
   const [openMantenimiento, setOpenMantenimiento] = useState(false);
-  const [openControlAsistencia, setOpenControlAsistencia] = useState(false);
+  const [openProyecto, setOpenProyecto] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
   const [role, setRole] = useState(null);
   const theme = useTheme();
@@ -43,9 +43,11 @@ const Sidebar = () => {
           navigate('/select-project');
         }
       };
+
       await fetchUserInfo();
       await fetchUserCheckInfo();
     };
+
     fetchMaster();
   }, []);
 
@@ -53,8 +55,8 @@ const Sidebar = () => {
     setOpenMantenimiento(!openMantenimiento);
   };
 
-  const handleToggleControlAsistencia = () => {
-    setOpenControlAsistencia(!openControlAsistencia);
+  const handleToggleProyecto = () => {
+    setOpenProyecto(!openProyecto);
   };
 
   const handleSelectProject = () => {
@@ -128,11 +130,11 @@ const Sidebar = () => {
                   <ListItem button component={Link} to="/dashboard/user-management" sx={{ pl: 4, '&:hover': { bgcolor: theme.palette.action.hover } }}>
                     <ListItemText primary="Gestión de Usuarios" />
                   </ListItem>
-                  <ListItem button component={Link} to="/dashboard/cursor-management" sx={{ pl: 4, '&:hover': { bgcolor: theme.palette.action.hover } }}>
-                    <ListItemText primary="Gestión de Cursor" />
-                  </ListItem>
                   <ListItem button component={Link} to="/dashboard/device-management" sx={{ pl: 4, '&:hover': { bgcolor: theme.palette.action.hover } }}>
                     <ListItemText primary="Gestión de Dispositivos" />
+                  </ListItem>
+                  <ListItem button component={Link} to="/dashboard/course-management" sx={{ pl: 4, '&:hover': { bgcolor: theme.palette.action.hover } }}>
+                    <ListItemText primary="Gestión de Cursos" />
                   </ListItem>
                   <ListItem button component={Link} to="/dashboard/student-management" sx={{ pl: 4, '&:hover': { bgcolor: theme.palette.action.hover } }}>
                     <ListItemText primary="Gestión de Estudiantes" />
@@ -141,23 +143,6 @@ const Sidebar = () => {
               </Collapse>
             </>
           )}
-          <ListItem button onClick={handleToggleControlAsistencia} sx={{ '&:hover': { bgcolor: theme.palette.action.hover } }}>
-            <ListItemIcon>
-              <People />
-            </ListItemIcon>
-            <ListItemText primary="Control de Asistencia" />
-            {openControlAsistencia ? <ExpandLess /> : <ExpandMore />}
-          </ListItem>
-          <Collapse in={openControlAsistencia} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItem button component={Link} to="/dashboard/attendance-management" sx={{ pl: 4, '&:hover': { bgcolor: theme.palette.action.hover } }}>
-                <ListItemText primary="Gestión de Asistencia" />
-              </ListItem>
-              <ListItem button component={Link} to="/dashboard/class-management" sx={{ pl: 4, '&:hover': { bgcolor: theme.palette.action.hover } }}>
-                <ListItemText primary="Gestión de Clases" />
-              </ListItem>
-            </List>
-          </Collapse>
           <ListItem button onClick={handleLogout} sx={{ '&:hover': { bgcolor: theme.palette.action.hover } }}>
             <ListItemIcon>
               <ExitToApp />
