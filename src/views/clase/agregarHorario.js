@@ -19,7 +19,7 @@ const ClassAddSchedule = () => {
   useEffect(() => {
     const fetchClassData = async () => {
       try {
-        const response = await axios.get(`${config.API_URL}/clase/${id}`, {
+        const response = await axios.get(`${config.API_URL}/clase`, {
           withCredentials: true,
         });
         setSchedules(response.data.data.general_schedule);

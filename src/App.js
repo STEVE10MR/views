@@ -37,8 +37,8 @@ function App() {
           <Route path="clase-management" element={<Class />} />
           <Route path="clase-management/:id" element={<Classedit />} />
           <Route path="clase-management/register" element={<Classregister />} />
-          <Route path="clase-management/:id/students/register" element={<ClassHorarioRegistrar />} />
-          <Route path="clase-management/:id/schedule/register" element={<ClassEstudianteRegistrar />} />
+          <Route path="clase-management/:id/students/register" element={<ClassEstudianteRegistrar />} />
+          <Route path="clase-management/:id/schedule/register" element={<ClassHorarioRegistrar />} />
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
