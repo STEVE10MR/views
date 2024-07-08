@@ -28,7 +28,7 @@ const CursosIndex = () => {
         params: {
           limit: rowsPerPage,
           sort: sortField,
-          [`or[0][0][nombre][regex]`]: search,
+          [`or[0][0][name][regex]`]: search,
           active
         },
         withCredentials: true,
@@ -151,7 +151,7 @@ const CursosIndex = () => {
               {cursos.length > 0 ? (
                 cursos.map(curso => (
                   <TableRow key={curso._id}>
-                    <TableCell>{curso.nombre}</TableCell>
+                    <TableCell>{curso.name}</TableCell>
                     <TableCell>
                       <Button variant="contained" color="primary" sx={{ mr: 1 }} onClick={() => handleEdit(curso._id)}>
                         EDITAR

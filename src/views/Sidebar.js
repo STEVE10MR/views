@@ -139,6 +139,9 @@ const Sidebar = () => {
                   <ListItem button component={Link} to="/dashboard/student-management" sx={{ pl: 4, '&:hover': { bgcolor: theme.palette.action.hover } }}>
                     <ListItemText primary="Gestión de Estudiantes" />
                   </ListItem>
+                  <ListItem button component={Link} to="/dashboard/clase-management" sx={{ pl: 4, '&:hover': { bgcolor: theme.palette.action.hover } }}>
+                    <ListItemText primary="Gestión de Clases" />
+                  </ListItem>
                 </List>
               </Collapse>
             </>
